@@ -1,1 +1,45 @@
 $site-primary-color: #4d3366;
+$site-primary-color-light: rgba(248, 248, 255, 0.6);
+$site-primary-gradient: linear-gradient(90deg, rgba(49,11,154,1) 10%, rgba(66,77,224,1) 30%, rgba(66,77,224,1) 60%, rgba(49,11,154,1) 90%);
+$site-primary-gradient-background: #310B9AFF;
+$site-primary-gradient-light: linear-gradient(90deg, rgba(49,11,154,0.25) 10%, rgba(66,77,224,0.25) 30%, rgba(66,77,224,0.25) 60%, rgba(49,11,154,0.25) 90%);
+$link-color: #8d7301;
+$link-color-hover: #c1b00b;
+$text-shadow-title: 1px 1px 9px rgba(38, 9, 113, 0.25);
+$text-color-title: #04000a;
+$text-color-description: #09000c;
+
+// screen sizes
+
+$screen-0-min:          0;
+$screen-small-min:      576px;
+$screen-mid-min:        1200px;
+$screen-big-min:        1366px;
+$screen-big-2-min:      1440px;
+$screen-huge-min:       1600px;
+
+$screen-small-max:      ($screen-small-min - 1) !default;
+$screen-mid-max:        ($screen-mid-min - 1) !default;
+$screen-big-max:        ($screen-big-min - 1) !default;
+$screen-big-2-max:      ($screen-big-2-min - 1) !default;
+$screen-huge-max:       ($screen-huge-min - 1) !default;
+
+
+// font sizes
+$font-size-title: 28px;
+$font-size-description: 14px;
+
+// font weights
+$font-weight-title: 600;
+
+// line
+$line-height-description: 2em;
+$line-height-title: 1.6em;
+
+// letter spacing
+$letter-spacing-title: 0.08em;
+$letter-spacing-description: 0.074em;
+
+// border
+$border-radius-default: 6px;
+$border-radius-2x: 12px;

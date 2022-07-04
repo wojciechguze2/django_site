@@ -1,0 +1,96 @@
+@import '_variables.scss';
+
+.container {
+  text-align: center;
+
+  .articles-container {
+    .article {
+        @media (min-width: $screen-0-min) {
+          max-width: 380px;
+        }
+
+        @media (min-width: $screen-small-min) {
+          max-width: 480px;
+        }
+
+        @media (min-width: $screen-mid-min) {
+          max-width: 720px;
+        }
+
+        @media (min-width: $screen-big-min) {
+          max-width: 900px;
+        }
+
+        @media (min-width: $screen-big-2-min) {
+          max-width: 1000px;
+        }
+
+        @media (min-width: $screen-huge-min) {
+          max-width: 1400px;
+        }
+
+      -webkit-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+      -moz-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+      box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+
+      margin-bottom: 5%;
+      padding: 5% 2%;
+
+      border-radius: $border-radius-2x;
+
+      -webkit-transition: background 0.25s ease-out;
+      -moz-transition: background 0.25s ease-out;
+      -o-transition: background 0.25s ease-out;
+      transition: background 0.25s ease-out;
+
+      &:hover {
+        background-color: $site-primary-color-light;
+      }
+
+      &--image {
+        padding: 1% 0;
+        margin-bottom: 1%;
+      }
+
+      &--title {
+        font-size: $font-size-title;
+        margin-bottom: 1%;
+        line-height: $line-height-title;
+        letter-spacing: $letter-spacing-title;
+        text-shadow: $text-shadow-title;
+        font-weight: $font-weight-title;
+        color: $text-color-title;
+      }
+
+      &--description {
+        font-size: $font-size-description;
+        margin: 0 auto 0 auto;
+        width: 75%;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: $line-height-description;
+        letter-spacing: $letter-spacing-description;
+        color: $text-color-description;
+      }
+
+      &--read-more {
+        display: block;
+        text-align: right;
+        width: 85%;
+        margin-top: 1%;
+
+        .read-more-link {
+          color: $link-color;
+          text-decoration: none;
+
+          &:hover {
+            color: $link-color-hover;
+          }
+        }
+      }
+    }
+  }
+}
