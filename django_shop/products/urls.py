@@ -8,5 +8,5 @@ products = ProductsViewSet.as_view({
 })
 
 urlpatterns = [
-    path('/products', products, name='front_products'),
+    path('products', products, name='front_products'),
 ]
