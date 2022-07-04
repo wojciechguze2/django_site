@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'sass_processor',
     'fontawesomefree',
     # own apps
-    'django_shop.homepage'
+    'django_shop.homepage',
+    'django_shop.products'
 ]
 
 PASSWORD_HASHERS = [
