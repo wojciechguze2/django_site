@@ -3,8 +3,16 @@ $site-primary-color-light: rgba(248, 248, 255, 0.6);
 $site-primary-gradient: linear-gradient(90deg, rgba(49,11,154,1) 10%, rgba(66,77,224,1) 30%, rgba(66,77,224,1) 60%, rgba(49,11,154,1) 90%);
 $site-primary-gradient-background: #310B9AFF;
 $site-primary-gradient-light: linear-gradient(90deg, rgba(49,11,154,0.25) 10%, rgba(66,77,224,0.25) 30%, rgba(66,77,224,0.25) 60%, rgba(49,11,154,0.25) 90%);
+$site-primary-color-hover: #8036c2;
 $link-color: #8d7301;
 $link-color-hover: #c1b00b;
+
+$link-color-lighter: #b1a900;
+$link-color-hover-lighter: #c4c101;
+
+$green-light: rgba(165, 255, 179, 0.4);
+$text-color-unavailable: #ff2e2e;
+$text-color-promoted: #4ba80c;
 $text-shadow-title: 1px 1px 9px rgba(38, 9, 113, 0.25);
 $text-color-title: #04000a;
 $text-color-description: #09000c;
@@ -27,7 +35,10 @@ $screen-huge-max:       ($screen-huge-min - 1) !default;
 
 // font sizes
 $font-size-title: 28px;
+$font-size-big: 23px;
+$font-size-small-title: 18px;
 $font-size-description: 14px;
+$font-size-short-description: 10px;
 
 // font weights
 $font-weight-title: 600;
