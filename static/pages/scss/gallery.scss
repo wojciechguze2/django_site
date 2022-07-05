@@ -1,0 +1,60 @@
+@import '_variables';
+
+.container {
+  @media (min-width: $screen-0-min) {
+    margin-top: 50%;
+  }
+
+  @media (min-width: $screen-0-min) {
+    margin-top: 2.5%;
+  }
+
+  .images {
+    .image {
+      &--container {
+        float: left;
+
+        @media (min-width: $screen-0-min) {
+          width: 96%;
+          margin: 2% 2%;
+        }
+
+        @media (min-width: $screen-mid-min) {
+          width: 48%;
+          margin: 2% 1%;
+        }
+
+        @media (min-width: $screen-huge-min) {
+          width: 30%;
+          margin: 2% 1%;
+        }
+      }
+
+      &--link {
+          width: 100%;
+          height: auto;
+
+        .image--image {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      &--title {
+        text-align: center;
+        width: 100%;
+        letter-spacing: $letter-spacing-title;
+        font-size: $font-size-small-title;
+        font-weight: $font-weight-small-title;
+
+        @media (min-width: $screen-huge-min) {
+          margin-top: -7%;
+          background-color: rgba(10, 6, 6, 0.5);
+          color: white;
+          cursor: pointer;
+          position: relative;
+        }
+      }
+    }
+  }
+}
