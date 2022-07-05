@@ -48,6 +48,11 @@
     -moz-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.045);
     box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.045);
     padding: 2%;
+    background-color: $site-primary-color-light;
+
+    &:hover {
+      background-color: $site-primary-color-light;
+    }
 
     .form {
       input, textarea {
