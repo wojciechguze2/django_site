@@ -2,27 +2,58 @@
 @import '_variables.scss';
 
 .main {
-    .pretty-underline:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #ffdc00;
-      transform-origin: bottom right;
-      transition: transform 0.25s ease-out;
-    }
+  @media (min-width: $screen-big-min) {
+    .pretty-underline {
+      background-image: linear-gradient(
+                      to right,
+                      $blue-very-light,
+                      $blue-very-light 50%,
+                      #000 50%
+      );
+      background-size: 200% 100%;
+      background-position: -100%;
+      display: inline-block;
+      position: relative;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.2s ease-in-out;
 
-    .pretty-underline:hover {
-      color: #dbfc9f;
-    }
+      &:before {
+        content: '';
+        background: #54b3d6;
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        transition: all 0.2s ease-in-out;
+      }
 
-    .pretty-underline:hover:after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #ffdc00;
+        transform-origin: bottom right;
+        transition: transform 0.2s ease-out;
+      }
+
+      &:hover {
+        color: #dbfc9f;
+        background-position: 0;
+      }
+
+      &:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
     }
+  }
 
   .nav-top {
     z-index: 100;
@@ -41,6 +72,8 @@
       .nav-item {
         float: left;
         padding: 0 5%;
+        font-size: $font-size-small-title;
+        font-weight: $font-weight-small-title;
 
         .nav-link {
           color: #fcfcfa;

@@ -1,5 +1,9 @@
 @import '_variables';
 
+.gallery-link {
+  -webkit-text-fill-color: aquamarine !important;
+}
+
 .container {
   @media (min-width: $screen-0-min) {
     margin-top: 50%;
