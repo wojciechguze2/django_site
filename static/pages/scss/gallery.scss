@@ -37,6 +37,18 @@
         .image--image {
           width: 100%;
           height: auto;
+          filter: grayscale(0.9) opacity(0.85);
+          transition: all 0.25s ease-out;
+          -webkit-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+          -moz-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+          box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+
+          &:hover {
+            filter: grayscale(0) opacity(1);
+            -webkit-box-shadow: 0 2px 14px 7px rgba(53, 26, 127, 0.3);
+            -moz-box-shadow: 0 2px 14px 7px rgba(53, 26, 127, 0.3);
+            box-shadow: 0 2px 14px 7px rgba(53, 26, 127, 0.3);
+          }
         }
       }
 
