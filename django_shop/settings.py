@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'fontawesomefree',
     # own apps
     'django_shop.homepage',
-    'django_shop.products'
+    'django_shop.products',
+    'django_shop.gallery'
 ]
 
 PASSWORD_HASHERS = [

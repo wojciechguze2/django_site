@@ -1,0 +1,27 @@
+{% extends 'base_front.html' %}
+{% load sass_tags %}
+
+{% block mycss %}
+    <link href="{% sass_src 'pages/scss/gallery.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock mycss %}
+
+{% block content %}
+    <div class="container">
+        <div class="images">
+            {% for image in images %}
+                <div class="image--container">
+                    <a class="image--link"
+                       target="_blank"
+                       href="{{ image.image_url }}">
+                        <img src="{{ image.image_url }}"
+                             class="image--image"
+                             alt="{{ image.title }}">
+                    </a>
+                    <div class="image--title">
+                        {{ image.title }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
