@@ -2,7 +2,54 @@
 @import '_variables.scss';
 
 .main {
+    .pretty-underline:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #ffdc00;
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    .pretty-underline:hover {
+      color: #dbfc9f;
+    }
+
+    .pretty-underline:hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
   .nav-top {
-    background-color: $site-primary-color;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $site-primary-gradient-background;
+    background: $site-primary-gradient;
+
+    .nav-top-ul {
+      width: 35%;
+      margin: auto;
+      list-style: none;
+
+      .nav-item {
+        float: left;
+        padding: 0 5%;
+
+        .nav-link {
+          color: #fcfcfa;
+          display: inline-block;
+          position: relative;
+        }
+      }
+    }
+  }
+
+  .content-container {
+    margin-top: 5%;
   }
 }
