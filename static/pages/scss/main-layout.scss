@@ -25,11 +25,13 @@
     }
 
   .nav-top {
+    z-index: 100;
     position: fixed;
     top: 0;
     width: 100%;
     background: $site-primary-gradient-background;
     background: $site-primary-gradient;
+    opacity: 0.975;
 
     .nav-top-ul {
       width: 35%;

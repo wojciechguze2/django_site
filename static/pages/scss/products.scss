@@ -1,0 +1,183 @@
+@import '_variables.scss';
+
+.container {
+  .products-container {
+    .product {
+      position: relative;
+      float: left;
+      text-align: center;
+
+      -webkit-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+      -moz-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+      box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+
+      @media (min-width: $screen-0-min) {
+        width: 95%;
+        height: 400px;
+        padding: 2.5%;
+      }
+
+      @media (min-width: $screen-mid-min) {
+        width: 42.5%;
+        height: 600px;
+        margin: 0 2% 5%;
+      }
+
+      &--thumbnail-container {
+          @media (min-width: $screen-0-min) {
+            max-width: 280px;
+            max-height: 158px;
+          }
+
+          @media (min-width: $screen-small-min) {
+            max-width: 320px;
+            max-height: 180px;
+          }
+
+          @media (min-width: $screen-mid-min) {
+            max-width: 380px;
+            max-height: 214px;
+          }
+
+          @media (min-width: $screen-big-min) {
+            max-width: 420px;
+            max-height: 237px;
+          }
+
+          @media (min-width: $screen-big-2-min) {
+            max-width: 480px;
+            max-height: 270px;
+          }
+
+          @media (min-width: $screen-huge-min) {
+            max-width: 620px;
+            max-height: 349px;
+          }
+
+        .product-thumbnail {
+          width: 98%;
+        }
+      }
+
+      &--name {
+        font-weight: $font-weight-title;
+        margin-top: 2.5%;
+
+        @media (min-width: $screen-0-min) {
+          font-size: $font-size-small-title;
+        }
+
+        @media (min-width: $screen-huge-min) {
+          font-size: $font-size-title;
+        }
+      }
+
+      &--short-description {
+        margin: 5% auto 0 auto;
+        width: 80%;
+
+        @media (min-width: $screen-0-min) {
+          font-size: $font-size-short-description;
+        }
+
+        @media (min-width: $screen-huge-min) {
+          font-size: $font-size-description;
+        }
+      }
+
+      &--price {
+        font-size: $font-size-big;
+
+        .price-value {
+          color: $text-color-promoted;
+        }
+
+        .not-active {
+          text-decoration: line-through;
+          color: $text-color-unavailable;
+          font-size: $font-size-small-title;
+        }
+      }
+
+      &--price-promoted {
+        font-size: $font-size-title;
+        color: $text-color-promoted;
+        font-weight: $font-weight-title;
+      }
+
+      .product-buttons {
+        width: 100%;
+        position: absolute;
+        bottom: 2.5%;
+
+        &--add-to-cart {
+          float: left;
+          width: 40%;
+          height: 50px;
+          line-height: 3;
+          margin: 2%;
+          border-radius: $border-radius-default;
+          text-decoration: none;
+          background-color: #f0ffce;
+          -webkit-box-shadow: inset 0 0 45px -1px rgba(0, 255, 104, 0.6);
+          -moz-box-shadow: inset 0 0 45px -1px rgba(0, 255, 104, 0.6);
+          box-shadow: inset 0 0 45px -1px rgba(0, 255, 104, 0.6);
+          -webkit-transition: background 0.3s linear;
+          -moz-transition: background 0.3s linear;
+          -o-transition: background 0.3s linear;
+          transition: background 0.3s linear;
+
+          .add-to-cart-link {
+            text-decoration: none;
+            font-size: $font-size-small-title;
+            font-weight: $font-weight-title;
+            color: $site-primary-color;
+
+            &:hover {
+              color: $site-primary-color-hover;
+            }
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: $green-light;
+          }
+        }
+
+        &--go-to-product {
+          float: left;
+          width: 40%;
+          height: 50px;
+          line-height: 3;
+          margin: 2%;
+          text-decoration: none;
+          border-radius: $border-radius-default;
+          background-color: #cbd9ff;
+          -webkit-box-shadow: inset 0 0 45px -1px rgba(0, 64, 255, 0.6);
+          -moz-box-shadow: inset 0 0 45px -1px rgba(0, 64, 255, 0.6);
+          box-shadow: inset 0 0 45px -1px rgba(0, 64, 255, 0.6);
+          -webkit-transition: background 0.3s linear;
+          -moz-transition: background 0.3s linear;
+          -o-transition: background 0.3s linear;
+          transition: background 0.3s linear;
+
+          .product-link {
+            text-decoration: none;
+            font-size: $font-size-small-title;
+            font-weight: $font-weight-title;
+            color: $site-primary-color;
+
+            &:hover {
+              color: $site-primary-color-hover;
+            }
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: $site-primary-color-light;
+          }
+        }
+      }
+    }
+  }
+}

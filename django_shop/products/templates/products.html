@@ -1,0 +1,58 @@
+{% extends 'base_front.html' %}
+{% load sass_tags %}
+
+{% block mycss %}
+    <link href="{% sass_src 'pages/scss/products.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock mycss %}
+
+{% block content %}
+    <div class="container">
+        <div class="products-container">
+            {% for product in products %}
+                <div class="product">
+                    <div class="product--thumbnail-container">
+                        <img src="{{ product.thumb_url }}" class="product-thumbnail" alt="{{ product.name }}">
+                    </div>
+                    <div class="product--name">
+                        {{ product.name }}
+                    </div>
+                    <div class="product--short-description">
+                        {{ product.short_description }}
+                    </div>
+                    <div class="product--price">
+                        <span class="price-value {% if product.price_promoted > 0 %}not-active{% endif %}">
+                            {% if product.price_promoted > 0 %}
+                                <i class="fas fa-exclamation"></i>
+                            {% endif %}
+                            {{ product.price }} {{ product.currency|lower }}
+                            {% if product.price_promoted > 0 %}
+                                <i class="fas fa-exclamation"></i>
+                            {% endif %}
+                        </span>
+                    </div>
+                    {% if product.price_promoted > 0 %}
+                        <div class="product--price-promoted">
+                            <span class="price-promoted-value">
+                                {{ product.price_promoted }} {{ product.currency|lower }}
+                            </span>
+                        </div>
+                    {% endif %}
+                    <div class="product-buttons">
+                        <a class="product-buttons--add-to-cart" href="#">
+                            <span class="add-to-cart-link">
+                                Add to cart
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </span>
+                        </a>
+                        <a class="product-buttons--go-to-product" href="#">
+                            <span class="product-link">
+                                View product
+                                <i class="fas fa-arrow-circle-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

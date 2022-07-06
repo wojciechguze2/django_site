@@ -23,10 +23,10 @@
             <nav class="navbar nav-top">
                 <ul class="nav-top-ul">
                     <li class="nav-item">
-                        <a class="nav-link pretty-underline" href="#">Homepage</a>
+                        <a class="nav-link pretty-underline" href="{% url 'front_homepage' %}">Homepage</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pretty-underline" href="#">Products</a>
+                        <a class="nav-link pretty-underline" href="{% url 'front_products' %}">Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pretty-underline" href="#">Gallery</a>
@@ -38,6 +38,9 @@
             </nav>
             <div class="content-container">
                 {% block content %}{% endblock %}
+            </div>
+            <div class="footer">
+
             </div>
         </div>
     </body>
