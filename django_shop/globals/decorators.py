@@ -45,8 +45,8 @@ def login_required():
         def inner(request, *args, **kwargs):
             if request.user.is_authenticated:
                 return func(request, *args, **kwargs)
-            else:
-                return redirect('front_homepage')
+
+            return redirect('front_login')
 
         return inner
 

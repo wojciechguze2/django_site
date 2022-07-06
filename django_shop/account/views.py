@@ -2,13 +2,13 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from rest_framework import viewsets
 from rest_framework.request import Request
 
 from django_shop.account.forms import RegisterForm
-from django_shop.globals.decorators import exceptions_debugger
+from django_shop.globals.decorators import exceptions_debugger, login_required
 
 
 class LoginViewSet(viewsets.ViewSet):
@@ -32,6 +32,13 @@ class LoginViewSet(viewsets.ViewSet):
                 messages.info(request, 'Username or password is incorrect')
 
         return render(request, 'front_login.html', {})
+
+
+@exceptions_debugger()
+def logoutView(request):
+    logout(request)
+
+    return redirect('front_homepage')
 
 
 class RegisterViewSet(viewsets.ViewSet):
@@ -58,3 +65,16 @@ class RegisterViewSet(viewsets.ViewSet):
         }
 
         return render(request, 'front_register.html', template_variables)
+
+
+class AccountViewSet(viewsets.ViewSet):
+    @staticmethod
+    @exceptions_debugger()
+    @login_required()
+    def retrieve(request: Request):
+
+        template_variables = {
+
+        }
+
+        return render(request, 'front_account.html', template_variables)
