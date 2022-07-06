@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     # own apps
     'django_shop.homepage',
     'django_shop.products',
-    'django_shop.gallery'
+    'django_shop.gallery',
+    'django_shop.contact'
 ]
 
 PASSWORD_HASHERS = [
