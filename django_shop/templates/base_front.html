@@ -43,6 +43,11 @@
                         </a>
                     </li>
                 </ul>
+                 <div class="nav-login">
+                     <a class="nav-link pretty-underline login-link" href="{% url 'front_login' %}">
+                         Login <i class='fas fa-sign-in-alt'></i>
+                     </a>
+                 </div>
             </nav>
             <div class="content-container">
                 {% block content %}{% endblock %}

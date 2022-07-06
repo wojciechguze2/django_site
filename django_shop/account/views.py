@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect, render
 from rest_framework import viewsets
 from rest_framework.request import Request
 
-from django_shop.contact.exceptions import ContactSaveError
-from django_shop.contact.forms import ContactForm
 from django_shop.globals.decorators import exceptions_debugger
 
 
@@ -15,19 +14,21 @@ class LoginViewSet(viewsets.ViewSet):
     @staticmethod
     @exceptions_debugger()
     def login(request: Request):
+        if request.user.is_authenticated:
+            return redirect('front_homepage')
+
         if request.method == 'POST':
-            form = ContactForm(request.POST)
+            username = request.POST.get('username')
+            password = request.POST.get('password')
 
-            if form.is_valid():
-                try:
-                    new_form = form.save(commit=False)
-                    new_form.save()
-                except Exception as e:
-                    raise ContactSaveError
+            user = authenticate(request, username=username, password=password)
 
-                return HttpResponseRedirect('/contact')
+            if user is not None:
+                login(request, user)
 
-        else:
-            form = ContactForm()
+                return redirect('front_account')
+            else:
+                messages.info(request, 'Username or password is incorrect')
 
-        return render(request, 'contact.html', {'form': form})
+        return render(request, 'front_login.html', {})
+

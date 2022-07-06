@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.shortcuts import redirect
 from rest_framework import status
 
 
@@ -30,6 +31,22 @@ def exceptions_debugger():
                     safe=False,
                     status=response_status
                 )
+
+        return inner
+
+    return decorator
+
+
+def login_required():
+    """
+    redirect to login page if not authenticated
+    """
+    def decorator(func):
+        def inner(request, *args, **kwargs):
+            if request.user.is_authenticated:
+                return func(request, *args, **kwargs)
+            else:
+                return redirect('front_homepage')
 
         return inner
 
