@@ -6,7 +6,29 @@
 }
 
 .container {
+  .general-container {
+    margin: 0.75% auto auto auto;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+    -moz-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+    box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+    padding: 5%;
+    border-radius: $border-radius-2x;
+
+    * {
+      font-size: $font-size-small-title;
+      margin-top: 2%;
+      display: block;
+    }
+  }
+
   .orders-container {
+    -webkit-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+    -moz-box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+    box-shadow: 0 2px 14px 7px rgba(49, 11, 154, 0.1);
+    border-radius: 20px;
+    background-color: rgba(49, 11, 154, 0.05);
+
     .bg-order-status-10 { // Waiting
       background-image: linear-gradient(to right bottom, #e0fff4, #ddfff5, #dafff7, #d8fff8, #d5fffa, #d3fffb, #d0fffb, #cefffc, #ccfffb, #c9fefb, #c7fefa, #c4fdf9);
       filter: grayscale(0.4);
@@ -135,5 +157,9 @@
         padding-left: 3%;
       }
     }
+  }
+
+  .settings-container {
+
   }
 }

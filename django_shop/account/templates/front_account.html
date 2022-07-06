@@ -10,6 +10,18 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active"
+                        id="general-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#general-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="general-tab-pane"
+                        aria-selected="true">
+                    General
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link"
                         id="orders-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#orders-tab-pane"
@@ -34,7 +46,36 @@
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show orders-container active"
+            {# general #}
+            <div class="tab-pane fade show active"
+                 id="general-tab-pane"
+                 role="tabpanel"
+                 aria-labelledby="general-tab"
+                 tabindex="0">
+                <div class="general-container">
+                    <span>
+                        First name: {{ general.first_name }}
+                    </span>
+                    <span>
+                        Last name: {{ general.last_name }}
+                    </span>
+                    <span>
+                        Username: {{ general.username }}
+                    </span>
+                    <span>
+                        E-mail: {{ general.email }}
+                    </span>
+                    <span>
+                        Creation date: {{ general.created_date }}
+                    </span>
+                    <span>
+                        Last login date: {{ general.last_login }}
+                    </span>
+                </div>
+            </div>
+            {# end of general #}
+            {# orders #}
+            <div class="tab-pane fade orders-container"
                  id="orders-tab-pane"
                  role="tabpanel"
                  aria-labelledby="home-tab"
@@ -85,13 +126,18 @@
                     </div>
                 {% endfor %}
             </div>
+            {# end of orders #}
+            {# settings #}
             <div class="tab-pane fade"
                  id="settings-tab-pane"
                  role="tabpanel"
                  aria-labelledby="profile-tab"
                  tabindex="0">
-                Settings
+                <div class="settings-container">
+
+                </div>
             </div>
+            {# end of settings #}
         </div>
     </div>
 {% endblock %}

@@ -5,6 +5,7 @@ from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import AbstractUser
 from django.shortcuts import redirect, render
 from rest_framework import viewsets
 from rest_framework.request import Request
@@ -94,7 +95,17 @@ class AccountViewSet(viewsets.ViewSet):
 
         settings = {}
 
+        general = {
+            'username': request.user.username,  # type: AbstractUser
+            'email': request.user.email,
+            'created_at': request.user.date_joined.strftime('%d.%m.%Y'),
+            'last_login': request.user.last_login,
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+        }
+
         template_variables = {
+            'general': general,
             'orders': orders,
             'settings': settings
         }
