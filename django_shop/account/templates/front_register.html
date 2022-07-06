@@ -13,19 +13,25 @@
         <div class="login-box">
             <form method="POST" action="" class="form">
                 {% csrf_token %}
-                <div class="form-group form--username"> {# (email) #}
-                    <input type="text" name="username" placeholder="E-mail" class="username-input form-control">
+                <div class="form-group form--email">
+                    <input type="email" name="email" placeholder="E-mail" class="username-input form-control">
+                </div>
+                <div class="form-group form--name">
+                    <input type="text" name="first_name" placeholder="First name" class="name-input form-control">
+                </div>
+                <div class="form-group form--name">
+                    <input type="text" name="last_name" placeholder="Last name" class="name-input form-control">
                 </div>
                 <div class="form-group form--password">
-                    <input type="password" name="password" placeholder="Password" class="password-input form-control">
+                    <input type="password" name="password1" placeholder="Password" class="password-input form-control">
+                </div>
+                <div class="form-group form--password">
+                    <input type="password" name="password2" placeholder="Repeat password" class="password-input form-control">
                 </div>
                 <div class="buttons">
                     <button type="submit" class="btn btn-primary form-submit">
-                        Login
+                        Register
                     </button>
-                    <a href="#" class="password-remember-link">
-                        Forgot your password?
-                    </a>
                 </div>
             </form>
             {{ form.errors }}
