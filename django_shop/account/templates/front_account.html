@@ -40,46 +40,48 @@
                  aria-labelledby="home-tab"
                  tabindex="0">
                 {% for order in orders %}
-                    <div class="order-line">
-                    <img class="order-line--thumb"
-                         src="{{ order.product.thumb_url }}"
-                         alt="{{ order.product.name }}">
-                        <table class="order-elements">
-                            <tr class="first-line d-inline-block">
-                                <td class="order-line--name-text d-inline-block order-element">
-                                    Product name
-                                </td>
-                                <td class="order-line--amount-text d-inline-block order-element">
-                                    Amount
-                                </td>
-                                <td class="order-line--price-text d-inline-block order-element">
-                                    Price
-                                </td>
-                                <td class="order-line--created-at-text d-inline-block order-element">
-                                    Create date
-                                </td>
-                                <td class="order-line--status-text d-inline-block order-element">
-                                    Status
-                                </td>
-                            </tr>
-                            <tr class="second-line d-inline-block">
-                                <td class="order-line--name-value d-inline-block order-element">
-                                    {{ order.product.name }}
-                                </td>
-                                <td class="order-line--amount-value d-inline-block order-element">
-                                    {{ order.product.amount }}
-                                </td>
-                                <td class="order-line--price-value d-inline-block order-element">
-                                    {{ order.price }} {{ order.currency }}
-                                </td>
-                                <td class="order-line--created-at-value d-inline-block order-element">
-                                    {{ order.created_at }}
-                                </td>
-                                <td class="order-line--status-value d-inline-block order-element">
-                                    {{ order.status }}
-                                </td>
-                            </tr>
-                        </table>
+                    <div class="order-line bg-order-status-{{ order.status }}">
+                        <a class="go-to-order-link" href="#">
+                            <img class="order-line--thumb"
+                                 src="{{ order.product.thumb_url }}"
+                                 alt="{{ order.product.name }}">
+                            <table class="order-elements">
+                                <tr class="first-line d-inline-block">
+                                    <td class="order-line--name-text d-inline-block order-element">
+                                        Product name
+                                    </td>
+                                    <td class="order-line--amount-text d-inline-block order-element">
+                                        Amount
+                                    </td>
+                                    <td class="order-line--price-text d-inline-block order-element">
+                                        Price
+                                    </td>
+                                    <td class="order-line--created-at-text d-inline-block order-element">
+                                        Creation date
+                                    </td>
+                                    <td class="order-line--status-text d-inline-block order-element">
+                                        Status
+                                    </td>
+                                </tr>
+                                <tr class="second-line d-inline-block">
+                                    <td class="order-line--name-value d-inline-block order-element">
+                                        {{ order.product.name }}
+                                    </td>
+                                    <td class="order-line--amount-value d-inline-block order-element">
+                                        {{ order.product.amount }}
+                                    </td>
+                                    <td class="order-line--price-value d-inline-block order-element">
+                                        {{ order.price }} {{ order.currency }}
+                                    </td>
+                                    <td class="order-line--created-at-value d-inline-block order-element">
+                                        {{ order.created_at }}
+                                    </td>
+                                    <td class="order-line--status-value d-inline-block order-element">
+                                        {{ order.status_text }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
                     </div>
                 {% endfor %}
             </div>
