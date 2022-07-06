@@ -11,11 +11,10 @@ from django_shop.contact.forms import ContactForm
 from django_shop.globals.decorators import exceptions_debugger
 
 
-class ContactViewSet(viewsets.ViewSet):
-
+class LoginViewSet(viewsets.ViewSet):
     @staticmethod
     @exceptions_debugger()
-    def send(request: Request):
+    def login(request: Request):
         if request.method == 'POST':
             form = ContactForm(request.POST)
 
