@@ -65,7 +65,12 @@
     opacity: 0.975;
 
     .nav-login {
-      width: 5%;
+      width: 10%;
+
+      .login-link {
+        font-size: $font-size-big;
+        font-weight: $font-weight-title;
+      }
     }
 
     .nav-top-ul {

@@ -18,7 +18,7 @@ class LoginViewSet(viewsets.ViewSet):
             return redirect('front_homepage')
 
         if request.method == 'POST':
-            username = request.POST.get('username')
+            username = request.POST.get('username')  # email
             password = request.POST.get('password')
 
             user = authenticate(request, username=username, password=password)
