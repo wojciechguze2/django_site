@@ -1,5 +1,9 @@
 @import '_variables.scss';
 
+.products-link {
+  -webkit-text-fill-color: aquamarine !important;
+}
+
 .container {
   .products-container {
     .product {
