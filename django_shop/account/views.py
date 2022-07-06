@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import datetime
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
@@ -9,6 +11,7 @@ from rest_framework.request import Request
 
 from django_shop.account.forms import RegisterForm
 from django_shop.globals.decorators import exceptions_debugger, login_required
+from django_shop.settings import DEFAULT_CURRENCY
 
 
 class LoginViewSet(viewsets.ViewSet):
@@ -16,7 +19,7 @@ class LoginViewSet(viewsets.ViewSet):
     @exceptions_debugger()
     def login(request: Request):
         if request.user.is_authenticated:
-            return redirect('front_homepage')  # todo: change to orders or account page
+            return redirect('front_account')
 
         if request.method == 'POST':
             email = request.POST.get('username')  # email
@@ -46,7 +49,7 @@ class RegisterViewSet(viewsets.ViewSet):
     @exceptions_debugger()
     def register(request: Request):
         if request.user.is_authenticated:
-            return redirect('front_homepage')  # todo: change to orders or account page
+            return redirect('front_account')
 
         form = RegisterForm()
 
@@ -72,9 +75,23 @@ class AccountViewSet(viewsets.ViewSet):
     @exceptions_debugger()
     @login_required()
     def retrieve(request: Request):
+        orders = [{
+            'id': i,
+            'product': {
+                'id': i,
+                'amount': i + 10,
+                'name': 'Product name',
+                'thumb_url': 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid'
+                             '=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80 '
+            },
+            'price': 199.99 + i,
+            'currency': DEFAULT_CURRENCY,
+            'created_at': datetime.now(),
+            'status': 10
+        } for i in range(10)]
 
         template_variables = {
-
+            'orders': orders
         }
 
         return render(request, 'front_account.html', template_variables)

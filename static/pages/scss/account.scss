@@ -1,7 +1,88 @@
+@import '_variables';
+
 .account-link {
   -webkit-text-fill-color: aquamarine !important;
 }
 
 .container {
+  .orders-container {
+    .order-line {
+      margin-top: 0.5%;
+      margin-bottom: 2%;
+      border: 3px inset rgba(49,11,154,0.6);
+      border-radius: 14px 5px 15px 5px;
+      padding: 2.5%;
+      width: 100%;
+      height: 100%;
 
+      &--thumb {
+        max-width: 15%;
+        margin-top: 1%;
+        border-radius: $border-radius-2x;
+        float: left;
+      }
+
+      .order-elements {
+        width: 85%;
+      }
+
+      .first-line, .second-line {
+        width: 100%;
+
+        .order-element {
+          margin: 0 2%;
+          width: 15%;
+        }
+      }
+
+      .first-line {
+        margin: 2.5%;
+      }
+
+      .second-line {
+        margin: 0 0 2.5% 2.5%;
+      }
+
+      &--name-text {
+
+      }
+
+      &--name-value {
+        font-size: $font-size-small-title;
+        font-weight: $font-weight-small-title;
+      }
+
+      &--amount-text {
+
+      }
+
+      &--amount-value {
+
+      }
+
+      &--price-text {
+
+      }
+
+      &--price-value {
+
+      }
+
+      &--created-at-text {
+
+      }
+
+      &--created-at-value {
+
+      }
+
+      &--status-text {
+        padding-left: 3%;
+      }
+
+      &--status-value {
+        padding-left: 3%;
+      }
+    }
+  }
 }
