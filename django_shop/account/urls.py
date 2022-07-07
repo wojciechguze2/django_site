@@ -13,7 +13,8 @@ register = RegisterViewSet.as_view({
 })
 
 account = AccountViewSet.as_view({
-    'get': 'retrieve'
+    'get': 'retrieve',
+    'post': 'retrieve'  # settings form
 })
 
 urlpatterns = [

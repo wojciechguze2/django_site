@@ -5,6 +5,7 @@ from datetime import datetime
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser
 from django.shortcuts import redirect, render
 from rest_framework import viewsets
@@ -73,10 +74,24 @@ class RegisterViewSet(viewsets.ViewSet):
 
 
 class AccountViewSet(viewsets.ViewSet):
+
     @staticmethod
     @exceptions_debugger()
     @login_required()
     def retrieve(request: Request):
+        if request.method == 'POST':
+            password_1 = request.POST.get('password1')
+            password_2 = request.POST.get('password2')
+
+            if password_1 == password_2:
+                request.user.password = make_password(password_1)
+
+            request.user.save()
+            messages.success(request, 'Password changed successfully')
+            logout(request)
+
+            return redirect('front_homepage')
+
         orders = [{
             'id': i,
             'product': {
@@ -93,7 +108,6 @@ class AccountViewSet(viewsets.ViewSet):
             'status_text': Order.STATUS_TEXT[10 + (i * 10) if i < 3 else 10]
         } for i in range(10)]
 
-        settings = {}
 
         general = {
             'username': request.user.username,  # type: AbstractUser
@@ -106,8 +120,7 @@ class AccountViewSet(viewsets.ViewSet):
 
         template_variables = {
             'general': general,
-            'orders': orders,
-            'settings': settings
+            'orders': orders
         }
 
         return render(request, 'front_account.html', template_variables)
