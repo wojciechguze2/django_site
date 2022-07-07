@@ -5,6 +5,8 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.request import Request
 
+from django_shop.globals.rules import Pagination
+
 
 class HomepageViewSet(viewsets.ViewSet):
 
@@ -13,7 +15,7 @@ class HomepageViewSet(viewsets.ViewSet):
         articles = [
             {
                 'id': _,
-                'title': 'Article title',
+                'title': 'Article title %d' % _,
                 'description': ('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem '
                                 'Ipsum has been the industrys standard dummy text ever since the 1500s, '
                                 'when an unknown printer took a galley of type and scrambled it to make a type '
@@ -28,8 +30,10 @@ class HomepageViewSet(viewsets.ViewSet):
             for _ in range(9)
         ]
 
+        pagination = Pagination(articles)
+
         template_variables = {
-            'articles': articles
+            'articles': pagination.page_results
         }
 
         return render(request, 'homepage.html', template_variables)
