@@ -30,7 +30,7 @@ class HomepageViewSet(viewsets.ViewSet):
             for _ in range(9)
         ]
 
-        pagination = Pagination(articles)
+        pagination = Pagination(articles, limit=2)
 
         template_variables = {
             'articles': pagination.page_results
