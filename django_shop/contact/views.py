@@ -8,29 +8,27 @@ from rest_framework.request import Request
 
 from django_shop.contact.exceptions import ContactSaveError
 from django_shop.contact.forms import ContactForm
+from django_shop.globals.decorators import exceptions_debugger
 
 
 class ContactViewSet(viewsets.ViewSet):
 
     @staticmethod
+    @exceptions_debugger()
     def send(request: Request):
-        try:
-            if request.method == 'POST':
-                form = ContactForm(request.POST)
+        if request.method == 'POST':
+            form = ContactForm(request.POST)
 
-                if form.is_valid():
-                    try:
-                        new_form = form.save(commit=False)
-                        new_form.save()
-                    except Exception as e:
-                        raise ContactSaveError
+            if form.is_valid():
+                try:
+                    new_form = form.save(commit=False)
+                    new_form.save()
+                except Exception as e:
+                    raise ContactSaveError
 
-                    return HttpResponseRedirect('/contact')
+                return HttpResponseRedirect('/contact')
 
-            else:
-                form = ContactForm()
+        else:
+            form = ContactForm()
 
-            return render(request, 'contact.html', {'form': form})
-
-        except Exception as e:
-            print(e)
+        return render(request, 'contact.html', {'form': form})

@@ -64,6 +64,19 @@
     background: $site-primary-gradient;
     opacity: 0.975;
 
+    .nav-login {
+      width: 10%;
+
+      .login-link {
+        font-size: $font-size-big;
+        font-weight: $font-weight-title;
+      }
+    }
+
+    .nav-account {
+      width: 7.5%;
+    }
+
     .nav-top-ul {
       width: 35%;
       margin: auto;

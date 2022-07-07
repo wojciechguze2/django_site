@@ -1,0 +1,161 @@
+{% extends 'base_front.html' %}
+{% load sass_tags %}
+
+{% block mycss %}
+    <link href="{% sass_src 'pages/scss/account.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock mycss %}
+
+{% block content %}
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active"
+                        id="general-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#general-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="general-tab-pane"
+                        aria-selected="true">
+                    General
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link"
+                        id="orders-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#orders-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="orders-tab-pane"
+                        aria-selected="true">
+                    Orders
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link"
+                        id="settings-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#settings-tab-pane"
+                        type="button"
+                        role="tab"
+                        aria-controls="settings-tab-pane"
+                        aria-selected="false">
+                    Settings
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            {# general #}
+            <div class="tab-pane fade show active"
+                 id="general-tab-pane"
+                 role="tabpanel"
+                 aria-labelledby="general-tab"
+                 tabindex="0">
+                <div class="general-container">
+                    <span>
+                        First name: {{ general.first_name }}
+                    </span>
+                    <span>
+                        Last name: {{ general.last_name }}
+                    </span>
+                    <span>
+                        Username: {{ general.username }}
+                    </span>
+                    <span>
+                        E-mail: {{ general.email }}
+                    </span>
+                    <span>
+                        Creation date: {{ general.create_date }}
+                    </span>
+                    <span>
+                        Last login date: {{ general.last_login }}
+                    </span>
+                </div>
+            </div>
+            {# end of general #}
+            {# orders #}
+            <div class="tab-pane fade orders-container"
+                 id="orders-tab-pane"
+                 role="tabpanel"
+                 aria-labelledby="home-tab"
+                 tabindex="0">
+                {% for order in orders %}
+                    <div class="order-line bg-order-status-{{ order.status }}">
+                        <a class="go-to-order-link" href="#">
+                            <img class="order-line--thumb"
+                                 src="{{ order.product.thumb_url }}"
+                                 alt="{{ order.product.name }}">
+                            <table class="order-elements">
+                                <tr class="first-line d-inline-block">
+                                    <td class="order-line--name-text d-inline-block order-element">
+                                        Product name
+                                    </td>
+                                    <td class="order-line--amount-text d-inline-block order-element">
+                                        Amount
+                                    </td>
+                                    <td class="order-line--price-text d-inline-block order-element">
+                                        Price
+                                    </td>
+                                    <td class="order-line--created-at-text d-inline-block order-element">
+                                        Creation date
+                                    </td>
+                                    <td class="order-line--status-text d-inline-block order-element">
+                                        Status
+                                    </td>
+                                </tr>
+                                <tr class="second-line d-inline-block">
+                                    <td class="order-line--name-value d-inline-block order-element">
+                                        {{ order.product.name }}
+                                    </td>
+                                    <td class="order-line--amount-value d-inline-block order-element">
+                                        {{ order.product.amount }}
+                                    </td>
+                                    <td class="order-line--price-value d-inline-block order-element">
+                                        {{ order.price }} {{ order.currency }}
+                                    </td>
+                                    <td class="order-line--created-at-value d-inline-block order-element">
+                                        {{ order.created_at }}
+                                    </td>
+                                    <td class="order-line--status-value d-inline-block order-element">
+                                        {{ order.status_text }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            {# end of orders #}
+            {# settings #}
+            <div class="tab-pane fade"
+                 id="settings-tab-pane"
+                 role="tabpanel"
+                 aria-labelledby="profile-tab"
+                 tabindex="0">
+                <div class="settings-container">
+                    <form method="POST" action="" class="form">
+                        {% csrf_token %}
+                        <h2 class="form--title">Change password</h2>
+                        <div class="form-group form--password">
+                            <input type="password" name="password1" placeholder="Password" class="password-input form-control">
+                        </div>
+                        <div class="form-group form--password">
+                            <input type="password" name="password2" placeholder="Repeat password" class="password-input form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg form--submit">
+                            Save
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {# end of settings #}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        <!-- -->
+    </script>
+{% endblock %}

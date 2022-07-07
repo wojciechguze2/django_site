@@ -16,6 +16,8 @@
 
         {# scripts #}
         <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
         {# end of scripts #}
     </head>
     <body>
@@ -43,6 +45,22 @@
                         </a>
                     </li>
                 </ul>
+                {% if user.is_authenticated %}
+                    <div class="nav-account">
+                        <a class="nav-link pretty-underline account-link" href="{% url 'front_account' %}">
+                            <i class='fas fa-user fa-2x'></i>
+                        </a>
+                    <a class="nav-link pretty-underline sign-out-link" href="{% url 'front_logout' %}">
+                        <i class="fas fa-sign-out-alt fa-2x"></i>
+                    </a>
+                    </div>
+                {% else %}
+                     <div class="nav-login">
+                         <a class="nav-link pretty-underline login-link" href="{% url 'front_login' %}">
+                             Sign in <i class='fas fa-sign-in-alt'></i>
+                         </a>
+                     </div>
+                {% endif %}
             </nav>
             <div class="content-container">
                 {% block content %}{% endblock %}
@@ -51,5 +69,8 @@
 
             </div>
         </div>
+
+    {% block scripts %}
+    {% endblock %}
     </body>
 </html>

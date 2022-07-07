@@ -23,7 +23,7 @@ class HomepageViewSet(viewsets.ViewSet):
                                 'and more recently with desktop publishing software like Aldus PageMaker including '
                                 'versions of Lorem Ipsum. ' * 15),
                 'image_url': 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid'
-                             '=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80 '
+                             '=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80'
             }
             for _ in range(9)
         ]

@@ -1,0 +1,43 @@
+{% extends 'base_front.html' %}
+{% load sass_tags %}
+
+{% block mycss %}
+    <link href="{% sass_src 'pages/scss/login.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock mycss %}
+
+{% block content %}
+    <div class="container">
+        <img class="left-image"
+             src="https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80"
+             alt="Login image">
+        <div class="login-box">
+            <form method="POST" action="" class="form">
+                {% csrf_token %}
+                <div class="form-group form--email">
+                    <input type="email" name="email" placeholder="E-mail" class="username-input form-control">
+                </div>
+                <div class="form-group form--name">
+                    <input type="text" name="first_name" placeholder="First name" class="name-input form-control">
+                </div>
+                <div class="form-group form--name">
+                    <input type="text" name="last_name" placeholder="Last name" class="name-input form-control">
+                </div>
+                <div class="form-group form--password">
+                    <input type="password" name="password1" placeholder="Password" class="password-input form-control">
+                </div>
+                <div class="form-group form--password">
+                    <input type="password" name="password2" placeholder="Repeat password" class="password-input form-control">
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-primary form-submit">
+                        Register
+                    </button>
+                </div>
+            </form>
+            {{ form.errors }}
+            {% for message in messages %}
+                <div class="error-message">{{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

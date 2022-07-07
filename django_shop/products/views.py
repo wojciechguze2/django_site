@@ -5,12 +5,14 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.request import Request
 
+from django_shop.globals.decorators import exceptions_debugger
 from django_shop.settings import DEFAULT_CURRENCY
 
 
 class ProductsViewSet(viewsets.ViewSet):
 
     @staticmethod
+    @exceptions_debugger()
     def list(request: Request):
         products = [
             {
