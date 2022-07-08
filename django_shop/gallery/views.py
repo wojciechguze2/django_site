@@ -24,17 +24,16 @@ class GalleryViewSet(viewsets.ViewSet):
             for _ in range(10)
         ]
 
-        page_number = request.GET.get('page')
-        pagination_page_number = int(page_number) if page_number else 1
-        pagination = Pagination(images, limit=12, page_number=pagination_page_number)
+        request_page_number = request.GET.get('page')
+        pagination = Pagination(images, limit=12, request_page_number=request_page_number)
 
         template_variables = {
             'images': pagination.page_results,
             'pagination': pagination.get_json(),
-            'include_pagination': True
+            'include_pagination': bool(images)
         }
 
-        if page_number:
+        if request_page_number:
             return render(request, 'gallery_content.html', template_variables)
 
         return render(request, 'gallery.html', template_variables)

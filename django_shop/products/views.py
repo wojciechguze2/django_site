@@ -43,17 +43,16 @@ class ProductsViewSet(viewsets.ViewSet):
             for _ in range(10)
         ]
 
-        page_number = request.GET.get('page')
-        pagination_page_number = int(page_number) if page_number else 1
-        pagination = Pagination(products, limit=4, page_number=pagination_page_number)
+        request_page_number = request.GET.get('page')
+        pagination = Pagination(products, limit=4, request_page_number=request_page_number)
 
         template_variables = {
             'products': pagination.page_results,
             'pagination': pagination.get_json(),
-            'include_pagination': True
+            'include_pagination': bool(products)
         }
 
-        if page_number:
+        if request_page_number:
             return render(request, 'products_content.html', template_variables)
 
         return render(request, 'products.html', template_variables)
