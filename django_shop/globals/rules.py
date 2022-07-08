@@ -10,3 +10,14 @@ class Pagination:
         self.page_number = page_number
         self.offset = (self.page_number - 1) * self.limit
         self.page_results = queryset[self.offset:self.offset + self.limit]
+
+        self.current = self.page_number
+        self.previous = self.current - 1 if self.current - 1 > 0 else None
+        self.next = self.current + 1 if self.current < self.pages_count else None
+
+    def get_json(self):
+        return {
+            'previous': self.previous,
+            'current': self.current,
+            'next': self.next
+        }

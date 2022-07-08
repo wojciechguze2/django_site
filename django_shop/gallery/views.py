@@ -6,6 +6,7 @@ from rest_framework import viewsets
 from rest_framework.request import Request
 
 from django_shop.globals.decorators import exceptions_debugger
+from django_shop.globals.rules import Pagination
 
 
 class GalleryViewSet(viewsets.ViewSet):
@@ -23,8 +24,17 @@ class GalleryViewSet(viewsets.ViewSet):
             for _ in range(10)
         ]
 
+        page_number = request.GET.get('page')
+        pagination_page_number = int(page_number) if page_number else 1
+        pagination = Pagination(images, limit=12, page_number=pagination_page_number)
+
         template_variables = {
-            'images': images
+            'images': pagination.page_results,
+            'pagination': pagination.get_json(),
+            'include_pagination': True
         }
+
+        if page_number:
+            return render(request, 'gallery_content.html', template_variables)
 
         return render(request, 'gallery.html', template_variables)

@@ -5,6 +5,8 @@
 }
 
 .container {
+  display: flex;
+
   @media (min-width: $screen-0-min) {
     margin-top: 50%;
   }

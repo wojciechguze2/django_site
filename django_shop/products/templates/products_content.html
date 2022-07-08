@@ -1,10 +1,3 @@
-{% extends 'base_front.html' %}
-{% load sass_tags %}
-
-{% block mycss %}
-    <link href="{% sass_src 'pages/scss/products.scss' %}" rel="stylesheet" type="text/css" />
-{% endblock mycss %}
-
 {% block content %}
     <div class="container">
         <div class="products-container">
@@ -49,10 +42,58 @@
             {% endfor %}
         </div>
     </div>
-{% endblock %}
-
-{% block scripts %}
-    <script>
-        initPagination('.content-container')
-    </script>
+    <nav aria-label="Page navigation example" class="text-center m-auto">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link"
+                    href="#"
+                    aria-label="First"
+                    id="page-link-first"
+                    data-page="first">
+                    <span aria-hidden="true">
+                    &laquo;
+                    </span>
+                </a>
+            </li>
+            {% if pagination.previous %}
+            <li class="page-item">
+                <a class="page-link"
+                    id="page-link-{{ pagination.previous }}"
+                    href="#"
+                    data-page="{{ pagination.previous }}">
+                {{ pagination.previous }}
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+                <a class="page-link"
+                    id="page-link-{{ pagination.current }}"
+                    href="#"
+                    data-page="{{ pagination.current }}">
+                {{ pagination.current }}
+                </a>
+            </li>
+            {% if pagination.next %}
+            <li class="page-item">
+                <a class="page-link"
+                    id="page-link-{{ pagination.next }}"
+                    href="#"
+                    data-page="{{ pagination.next }}">
+                {{ pagination.next }}
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link"
+                    href="#"
+                    aria-label="Last"
+                    id="page-link-last"
+                    data-page="last">
+                    <span aria-hidden="true">
+                    &raquo;
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 {% endblock %}

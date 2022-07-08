@@ -6,6 +6,7 @@ from rest_framework import viewsets
 from rest_framework.request import Request
 
 from django_shop.globals.decorators import exceptions_debugger
+from django_shop.globals.rules import Pagination
 from django_shop.settings import DEFAULT_CURRENCY
 
 
@@ -42,8 +43,17 @@ class ProductsViewSet(viewsets.ViewSet):
             for _ in range(10)
         ]
 
+        page_number = request.GET.get('page')
+        pagination_page_number = int(page_number) if page_number else 1
+        pagination = Pagination(products, limit=4, page_number=pagination_page_number)
+
         template_variables = {
-            'products': products
+            'products': pagination.page_results,
+            'pagination': pagination.get_json(),
+            'include_pagination': True
         }
+
+        if page_number:
+            return render(request, 'products_content.html', template_variables)
 
         return render(request, 'products.html', template_variables)

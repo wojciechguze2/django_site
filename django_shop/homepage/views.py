@@ -30,10 +30,17 @@ class HomepageViewSet(viewsets.ViewSet):
             for _ in range(9)
         ]
 
-        pagination = Pagination(articles, limit=2)
+        page_number = request.GET.get('page')
+        pagination_page_number = int(page_number) if page_number else 1
+        pagination = Pagination(articles, limit=2, page_number=pagination_page_number)
 
         template_variables = {
-            'articles': pagination.page_results
+            'articles': pagination.page_results,
+            'pagination': pagination.get_json(),
+            'include_pagination': True
         }
+
+        if page_number:
+            return render(request, 'articles_content.html', template_variables)
 
         return render(request, 'homepage.html', template_variables)
