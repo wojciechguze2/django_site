@@ -1,0 +1,85 @@
+@import '_variables';
+
+.container {
+  .product-top {
+    .left {
+      float: left;
+      width: 60%;
+
+      .product-images-carousel {
+      }
+    }
+
+    .right {
+      float: left;
+      margin-left: 5%;
+      width: 34%;
+      text-align: center;
+
+      .product--name {
+        width: 100%;
+        font-size: $font-size-title;
+        font-weight: $font-weight-title;
+        letter-spacing: $letter-spacing-title;
+        color: $site-primary-color;
+      }
+
+      .product--price {
+        width: 100%;
+      }
+
+      .product--price-promoted {
+        width: 100%;
+      }
+
+      .product--add-to-cart {
+          width: 100%;
+          height: 50px;
+          line-height: 3;
+          border-radius: $border-radius-default;
+          text-decoration: none;
+          background-color: #f0ffce;
+          -webkit-box-shadow: inset 0 0 45px -1px rgba(0, 255, 104, 0.6);
+          -moz-box-shadow: inset 0 0 45px -1px rgba(0, 255, 104, 0.6);
+          box-shadow: inset 0 0 45px -1px rgba(0, 255, 104, 0.6);
+          -webkit-transition: background 0.3s linear;
+          -moz-transition: background 0.3s linear;
+          -o-transition: background 0.3s linear;
+          transition: background 0.3s linear;
+          display: flex;
+
+          .add-to-cart-link {
+            text-decoration: none;
+            font-size: $font-size-small-title;
+            font-weight: $font-weight-title;
+            color: $site-primary-color;
+            margin: auto;
+
+            &:hover {
+              color: $site-primary-color-hover;
+            }
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: $green-light;
+          }
+      }
+    }
+  }
+
+  .product-bottom {
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    margin: 4.5% auto;
+
+    .product--description {
+      text-align: center;
+      margin: auto;
+      font-size: $font-size-description;
+      font-weight: $font-weight-small-title;
+      letter-spacing: $letter-spacing-description;
+    }
+  }
+}

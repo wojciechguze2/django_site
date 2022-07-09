@@ -1,0 +1,72 @@
+{% extends 'base_front.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block mycss %}
+    <link href="{% sass_src 'pages/scss/product.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock mycss %}
+
+
+{% block content %}
+<div class="container product-details" id="product-id-{{ product.id }}">
+    <div class="product-top">
+        <div class="left">
+            <div class="product-images-carousel">
+                <div id="productImagesCarousel" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                      {% for image in product.image_urls %}
+                          <button type="button"
+                                  data-bs-target="#productImagesCarousel"
+                                  data-bs-slide-to="{{ forloop.counter0 }}"
+                                  {% if forloop.counter0 == 0 %}class="active"{% endif %}></button>
+                      {% endfor %}
+                  </div>
+                  <div class="carousel-inner">
+                      {% for image in product.image_urls %}
+                        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
+                          <img src="{{ image }}"
+                               alt="Product carousel images"
+                               class="d-block w-100">
+                        </div>
+                      {% endfor %}
+                  </div>
+                  <button class="carousel-control-prev"
+                          type="button"
+                          data-bs-target="#productImagesCarousel"
+                          data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next"
+                          type="button"
+                          data-bs-target="#productImagesCarousel"
+                          data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="product--name">
+                {{ product.name }}
+            </div>
+            <div class="product--price">
+                Price: {{ product.price }} {{ product.currency }}
+            </div>
+            <div class="product--price-promoted">
+                {{ product.price_promoted }} {{ product.currency }}
+            </div>
+            <a class="product--add-to-cart" href="#">
+                <span class="add-to-cart-link">
+                    Add to cart
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="product-bottom">
+        <div class="product--description">
+            {{ product.description }}
+        </div>
+    </div>
+</div>
+{% endblock %}
