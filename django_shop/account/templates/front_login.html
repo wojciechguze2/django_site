@@ -14,24 +14,33 @@
             <form method="POST" action="" class="form">
                 {% csrf_token %}
                 <div class="form-group form--username"> {# (email) #}
-                    <input type="text" name="username" placeholder="E-mail" class="username-input form-control">
+                    <input type="text" name="username" placeholder="E-mail" class="username-input form-control" required>
                 </div>
                 <div class="form-group form--password">
-                    <input type="password" name="password" placeholder="Password" class="password-input form-control">
+                    <input type="password" name="password" placeholder="Password" class="password-input form-control" required>
                 </div>
                 <div class="buttons">
                     <button type="submit" class="btn btn-primary form-submit">
                         Login
                     </button>
-                    <a href="#" class="password-remember-link">
+                    <a href="{% url 'front_password_reminder' %}" class="password-reminder-link">
                         Forgot your password?
+                    </a>
+                    <a href="{% url 'front_register' %}" class="sign-up-link">
+                        Don't have an account yet? Sign up
                     </a>
                 </div>
             </form>
             {{ form.errors }}
+
             {% for message in messages %}
-                <div class="error-message">{{ message }}</div>
+                <div class="message">{{ message }}</div>
             {% endfor %}
         </div>
     </div>
+    <script>
+        if (/password/.test(window.location.href)) {
+            window.history.pushState({}, document.title, "/" + "login")
+        }
+    </script>
 {% endblock %}
