@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -146,7 +146,8 @@ class PasswordReminderViewSet(viewsets.ViewSet):
                 raise User.DoesNotExist
 
             password_change_hash = PasswordChange.objects.create(
-                user=user.first()
+                user=user.first(),
+                expires=datetime.now(tz=timezone.utc) + timedelta(hours=1)
             )
 
             reminder_link = SHOP_DOMAIN + '/change-password?hash=' + str(password_change_hash.hash)
@@ -179,17 +180,22 @@ class PasswordChangeViewSet(viewsets.ViewSet):
 
         password_change_hash = PasswordChange.objects.filter(
             hash=request_hash,
-            expires__gt=datetime.now(tz=timezone.utc)
+            expires__gt=datetime.now(tz=timezone.utc),
+            active=True
         )
 
         if request.POST and password_1 \
                 and password_2 \
                 and password_change_hash.exists() \
                 and password_1 == password_2:
-            user = password_change_hash.first().user
+            password_change_hash = password_change_hash.first()
+
+            user = password_change_hash.user
             user.password = make_password(password_1)
+            password_change_hash.active = False
 
             user.save()
+            password_change_hash.save()
 
             form_messages = ['Password has been changes successfully.']
 
