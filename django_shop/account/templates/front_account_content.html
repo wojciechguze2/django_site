@@ -1,12 +1,5 @@
-{% extends 'base_front.html' %}
-{% load sass_tags %}
-
-{% block mycss %}
-    <link href="{% sass_src 'pages/scss/account.scss' %}" rel="stylesheet" type="text/css" />
-{% endblock mycss %}
-
 {% block content %}
-    <div class="container">
+   <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active"
@@ -152,10 +145,4 @@
             {# end of settings #}
         </div>
     </div>
-{% endblock %}
-
-{% block scripts %}
-    <script>
-        initPagination('.content-container')
-    </script>
 {% endblock %}

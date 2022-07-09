@@ -108,7 +108,6 @@ class AccountViewSet(viewsets.ViewSet):
             'status_text': Order.STATUS_TEXT[10 + (i * 10) if i < 3 else 10]
         } for i in range(10)]
 
-
         general = {
             'username': request.user.username,  # type: AbstractUser
             'email': request.user.email,

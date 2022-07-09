@@ -5,6 +5,8 @@
 }
 
 .container {
+  display: flex;
+
   .products-container {
     .product {
       position: relative;

@@ -1,0 +1,79 @@
+{% block content %}
+    <div class="container">
+        <div class="articles-container">
+            {% for article in articles %}
+                <div class="article">
+                    <img src="{{ article.image_url }}"
+                         class="article--image"
+                         alt="{{ article.title }}">
+                    <div class="article--title">
+                        {{ article.title }}
+                    </div>
+                    <div class="article--description">
+                        {{ article.description }}
+                    </div>
+                    <div class="article--read-more">
+                        <a class="read-more-link" href="#{# url 'article' article.id #}">
+                            Read more
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <nav aria-label="Page navigation example" class="text-center m-auto">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link"
+                    href="#"
+                    aria-label="First"
+                    id="page-link-first"
+                    data-page="first">
+                <span aria-hidden="true">
+                <i class="fa-solid fa-backward-step"></i>
+                </span>
+                </a>
+            </li>
+            {% if pagination.previous %}
+            <li class="page-item">
+                <a class="page-link"
+                    id="page-link-{{ pagination.previous }}"
+                    href="#"
+                    data-page="{{ pagination.previous }}">
+                {{ pagination.previous }}
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+                <a class="page-link"
+                    id="page-link-{{ pagination.current }}"
+                    href="#"
+                    data-page="{{ pagination.current }}">
+                {{ pagination.current }}
+                </a>
+            </li>
+            {% if pagination.next %}
+            <li class="page-item">
+                <a class="page-link"
+                    id="page-link-{{ pagination.next }}"
+                    href="#"
+                    data-page="{{ pagination.next }}">
+                {{ pagination.next }}
+                </a>
+            </li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link"
+                    href="#"
+                    aria-label="Last"
+                    id="page-link-last"
+                    data-page="last">
+                <span aria-hidden="true">
+                    <i class="fa-solid fa-forward-step"></i>
+                </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}
