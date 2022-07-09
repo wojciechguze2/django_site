@@ -4,20 +4,21 @@ function initPagination(listContainer='.content-container') {
     const $body = $('body'),
         pageLink = '.page-link'
 
-    let xhrListPool = {}
-
     $body.on('click', pageLink, function(e) {
         e.stopImmediatePropagation()
 
+        if ($(this).parent().hasClass('active')) {  // current page
+            return
+        }
+
         const page = $(this).attr('data-page'),
-            url = new URL(window.location.href);
+            url = new URL(window.location.href)
 
         url.searchParams.append('page', page);
 
         $.get({
             url: url,
             success: function(response) {
-                console.log(response)
                 $(listContainer).html(response)
             },
             error: function(xhr, status, exception) {
