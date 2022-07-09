@@ -202,5 +202,13 @@ class PasswordChangeViewSet(viewsets.ViewSet):
             return render(request, 'front_login.html', {
                 'messages': form_messages
             })
+        elif password_1 != password_2:
+            form_messages = ['Passwords must be the same.']
+        elif not password_change_hash.exists():
+            form_messages = ['Your password reset e-mail has expired.']
+        else:
+            form_messages = ['An unexpected error occurred.']
 
-        return render(request, 'front_password_change.html', {})
+        return render(request, 'front_password_change.html', {
+                'messages': form_messages
+            })
