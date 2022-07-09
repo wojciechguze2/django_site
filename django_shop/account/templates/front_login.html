@@ -38,4 +38,9 @@
             {% endfor %}
         </div>
     </div>
+    <script>
+        if (/password/.test(window.location.href)) {
+            window.history.pushState({}, document.title, "/" + "login")
+        }
+    </script>
 {% endblock %}
