@@ -12,6 +12,7 @@ SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+SHOP_DOMAIN = '127.0.0.1:8000'
 
 DOMAIN_NAME = '127.0.0.1'
 STATICS_DOMAIN_NAME = '127.0.0.1'

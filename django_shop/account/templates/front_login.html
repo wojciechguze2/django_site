@@ -23,14 +23,18 @@
                     <button type="submit" class="btn btn-primary form-submit">
                         Login
                     </button>
-                    <a href="#" class="password-remember-link">
+                    <a href="{% url 'front_password_reminder' %}" class="password-reminder-link">
                         Forgot your password?
+                    </a>
+                    <a href="{% url 'front_register' %}" class="sign-up-link">
+                        Don't have an account yet? Sign up
                     </a>
                 </div>
             </form>
             {{ form.errors }}
+
             {% for message in messages %}
-                <div class="error-message">{{ message }}</div>
+                <div class="message">{{ message }}</div>
             {% endfor %}
         </div>
     </div>

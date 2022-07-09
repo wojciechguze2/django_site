@@ -59,9 +59,10 @@
         margin-top: 5%;
         width: 100%;
 
-        .password-remember-link {
+        .password-reminder-link,
+        .sign-up-link {
           float: left;
-          width: 50%;
+          width: 90%;
           margin: 3.5% 2%;
         }
 
@@ -73,17 +74,18 @@
       }
     }
 
-    .error-message {
+    .message {
+      margin-top: 20%;
       border-radius: $border-radius-default;
       text-align: center;
       width: 100%;
       font-size: $font-size-small-title;
       font-weight: $font-weight-small-title;
       letter-spacing: $letter-spacing-description;
-      background-color: rgb(253, 227, 227);
-      -webkit-box-shadow: 0 0 20px -1px rgba(218, 41, 69, 1);
-      -moz-box-shadow: 0 0 20px -1px rgba(218, 41, 69, 1);
-      box-shadow: 0 0 20px -1px rgba(218, 41, 69, 1);
+      background-color: rgb(227, 253, 251);
+      -webkit-box-shadow: 0 0 14px 0 rgba(78, 94, 255, 0.5);
+      -moz-box-shadow: 0 0 14px 0 rgba(78, 94, 255, 0.5);
+      box-shadow: 0 0 14px 0 rgba(78, 94, 255, 0.5);
     }
   }
 }
