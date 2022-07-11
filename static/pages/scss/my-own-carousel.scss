@@ -1,0 +1,19 @@
+.my-own-carousel-container {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 1);
+  height: 35vh;
+  display: flex;
+  flex-flow: column wrap;
+  overflow: hidden;
+
+  .carousel-image {
+    float: left;
+    height: 100%;
+    width: 17.5%;
+    margin: 0 1.25%;
+    background-color: rgba(0, 255, 0, 0.5);
+    overflow: hidden;
+    max-height: 35vh;
+    transition: 1s margin ease-out, 1s width ease-in;
+  }
+}
