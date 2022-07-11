@@ -13,7 +13,7 @@ $link-color-hover-lighter: #c4c101;
 
 $blue-very-light: #7ffff5;
 $green-light: rgba(165, 255, 179, 0.4);
-$text-color-unavailable: #ff2e2e;
+$text-color-unavailable: #5f5f5f;
 $text-color-promoted: #4ba80c;
 $text-shadow-title: 1px 1px 9px rgba(38, 9, 113, 0.25);
 $text-color-title: #04000a;
@@ -36,6 +36,7 @@ $screen-huge-max:       ($screen-huge-min - 1) !default;
 
 
 // font sizes
+$font-size-big-title: 34px;
 $font-size-title: 28px;
 $font-size-big: 23px;
 $font-size-small-title: 18px;

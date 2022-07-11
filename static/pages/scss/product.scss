@@ -18,7 +18,7 @@
 
       .product--name {
         width: 100%;
-        font-size: $font-size-title;
+        font-size: $font-size-big-title;
         font-weight: $font-weight-title;
         letter-spacing: $letter-spacing-title;
         color: $site-primary-color;
@@ -26,10 +26,29 @@
 
       .product--price {
         width: 100%;
+        font-size: $font-size-small-title;
+        color: $site-primary-color;
+        margin: 2.5%;
+      }
+
+      .product--price-save {
+        width: 100%;
+        font-size: $font-size-small-title;
+        color: $text-color-promoted;
+        margin: 1.5%;
+      }
+
+      .not-active {
+        color: $text-color-unavailable;
+        text-decoration: line-through;
       }
 
       .product--price-promoted {
         width: 100%;
+        font-size: $font-size-title;
+        color: $text-color-promoted;
+        font-weight: $font-weight-title;
+        margin: 2.5%;
       }
 
       .product--add-to-cart {

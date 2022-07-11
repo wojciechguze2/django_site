@@ -21,7 +21,7 @@ class GalleryViewSet(viewsets.ViewSet):
                 'image_url': 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid'
                              '=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80 ',
             }
-            for _ in range(10)
+            for _ in range(100)
         ]
 
         request_page_number = request.GET.get('page')

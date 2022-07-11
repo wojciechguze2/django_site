@@ -9,7 +9,7 @@
        {% endblock %}
        ```
     2) make file gallery_content.html with only {% block %} content (just copy it)
-    3) add to bottom of gallery.html's content block 
+    3) add to bottom of gallery_content.html's content block 
        a code from pagination.html
     4) ```
        if page_number:
