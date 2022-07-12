@@ -1,0 +1,22 @@
+{% extends 'base_front.html' %}
+{% load sass_tags %}
+
+{% block mycss %}
+    <link href="{% sass_src 'pages/scss/article.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock mycss %}
+
+{% block content %}
+    <div class="container">
+        <div class="article-container article">
+            <div class="article--title text-center">
+                {{ article.title }}
+            </div>
+            <img src="{{ article.image_url }}"
+                 class="article--image"
+                 alt="{{ article.title }}">
+            <div class="article--description">
+                {{ article.description }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

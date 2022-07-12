@@ -5,6 +5,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.request import Request
 
+from django_shop.globals.decorators import exceptions_debugger
 from django_shop.globals.rules import Pagination
 from django_shop.homepage.models import Article
 
@@ -12,6 +13,7 @@ from django_shop.homepage.models import Article
 class HomepageViewSet(viewsets.ViewSet):
 
     @staticmethod
+    @exceptions_debugger()
     def retrieve(request: Request):
         articles = Article.objects.filter(active=True)
         articles = [
@@ -32,3 +34,18 @@ class HomepageViewSet(viewsets.ViewSet):
             return render(request, 'articles_content.html', template_variables)
 
         return render(request, 'homepage.html', template_variables)
+
+
+class ArticleViewSet(viewsets.ViewSet):
+
+    @staticmethod
+    @exceptions_debugger()
+    def retrieve(request: Request, article_id: int):
+        article = Article.objects.get(id=article_id)
+        article = article.to_repr()
+
+        template_variables = {
+            'article': article
+        }
+
+        return render(request, 'article.html', template_variables)

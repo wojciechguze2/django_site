@@ -13,9 +13,10 @@
                     <img src="{{ article.image_url }}"
                          class="article--image"
                          alt="{{ article.title }}">
-                    <div class="article--title">
+                    <a class="article--title"
+                       href="{% url 'front_article' article.id %}">
                         {{ article.title }}
-                    </div>
+                    </a>
                     <div class="article--description">
                         {% if article.short_description %}
                             {{ article.short_description }}
@@ -24,7 +25,7 @@
                         {% endif %}
                     </div>
                     <div class="article--read-more">
-                        <a class="read-more-link" href="#{# url 'article' article.id #}">
+                        <a class="read-more-link" href="{% url 'front_article' article.id %}">
                             Read more
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>

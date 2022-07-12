@@ -4,6 +4,10 @@
   -webkit-text-fill-color: aquamarine !important;
 }
 
+.pagination {
+  margin-top: 5%;
+}
+
 .container {
   display: flex;
 
@@ -19,13 +23,14 @@
 
       @media (min-width: $screen-0-min) {
         width: 95%;
-        height: 400px;
+        height: 425px;
         padding: 2.5%;
+        margin: 3%;
       }
 
       @media (min-width: $screen-mid-min) {
         width: 42.5%;
-        height: 600px;
+        height: 650px;
         margin: 0 2% 5%;
       }
 
