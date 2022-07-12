@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django_shop.contact',
     'django_shop.globals',
     'django_shop.account',
-    'django_shop.orders'
+    'django_shop.orders',
+    'django_shop.payments'
 ]
 
 PASSWORD_HASHERS = [
