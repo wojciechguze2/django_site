@@ -94,3 +94,21 @@ class Product(models.Model):
             'recommendations': json.loads(self.recommendations)
         }
 
+    def flat_repr(self):
+        return {
+            **self.to_short_repr(),
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'price_gross': self.price_gross,
+            'front_price_gross': self.front_price_gross,
+            'currency': self.currency,
+            'thumb_url': self.thumb_url,
+            'length_unit': self.length_unit,
+            'weight_unit': self.weight_unit,
+            'weight': self.weight,
+            'width': self.width,
+            'height': self.height,
+            'length': self.length
+        }
+

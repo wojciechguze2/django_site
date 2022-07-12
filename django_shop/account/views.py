@@ -95,21 +95,15 @@ class AccountViewSet(viewsets.ViewSet):
 
             return redirect('front_homepage')
 
-        orders = [{
-            'id': i,
-            'product': {
-                'id': i,
-                'amount': i + 10,
-                'name': 'Product name',
-                'thumb_url': 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid'
-                             '=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80 '
-            },
-            'price': 199.99 + i,
-            'currency': DEFAULT_CURRENCY,
-            'created_at': datetime.now().strftime('%d.%m.%Y'),
-            'status': 10 + (i * 10) if i < 3 else 10,
-            'status_text': Order.STATUS_TEXT[10 + (i * 10) if i < 3 else 10]
-        } for i in range(10)]
+        orders = Order.objects.filter(
+            user=request.user,
+            active=True
+        )
+
+        orders = [
+            order.to_repr()
+            for order in orders
+        ]
 
         general = {
             'username': request.user.username,  # type: AbstractUser

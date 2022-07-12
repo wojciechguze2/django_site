@@ -27,7 +27,7 @@ class Order(models.Model):
     currency = models.CharField(max_length=6, null=False, blank=False, default=DEFAULT_CURRENCY)
     amount = models.IntegerField(null=False, default=1)
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.PROTECT)
-    payment = models.ForeignKey(Payment, null=False, blank=False, on_delete=models.PROTECT)
+    payment = models.ForeignKey(Payment, null=True, blank=True, on_delete=models.PROTECT)
     status = models.IntegerField(null=False, default=STATUS_WAITING)
     user = models.ForeignKey(User, null=False, blank=False, on_delete=models.PROTECT)
     active = models.BooleanField(null=False, blank=False, default=True)
@@ -38,6 +38,18 @@ class Order(models.Model):
 
     class Meta:
         ordering = ['id']
+
+    def to_repr(self):
+        return {
+            'id': self.id,
+            'product': self.product.to_short_repr(),
+            'price_gross': self.price_gross,
+            'amount': self.amount,
+            'currency': self.currency,
+            'create_date': self.create_date.strftime('%d.%m.%Y'),
+            'status_text': self.STATUS_TEXT[self.status],
+            'status': self.status
+        }
 
     @property
     def price_gross(self):

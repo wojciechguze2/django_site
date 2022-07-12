@@ -8,7 +8,6 @@ from rest_framework.request import Request
 from django_shop.globals.decorators import exceptions_debugger
 from django_shop.globals.rules import Pagination
 from django_shop.products.models import Product
-from django_shop.settings import DEFAULT_CURRENCY, DEFAULT_LENGTH_UNIT, DEFAULT_WEIGHT_UNIT
 
 
 class ProductsViewSet(viewsets.ViewSet):
