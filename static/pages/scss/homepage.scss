@@ -69,6 +69,8 @@
       }
 
       &--title {
+        float: left;
+        width: 100%;
         font-size: $font-size-title;
         margin-bottom: 1%;
         line-height: $line-height-title;
@@ -76,6 +78,7 @@
         text-shadow: $text-shadow-title;
         font-weight: $font-weight-title;
         color: $text-color-title;
+        text-decoration: none;
       }
 
       &--description {

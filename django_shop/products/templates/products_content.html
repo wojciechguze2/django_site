@@ -1,8 +1,8 @@
 {% block content %}
-<div class="container">
+    <div class="container {% if products|length == 1 %}justify-content-center{% endif %}">
         <div class="products-container">
             {% for product in products %}
-                <div class="product">
+                <div class="product {% if products|length == 1 %}w-75{% endif %}">
                     <div class="product--thumbnail-container">
                         <a href ="{% url 'front_product' product.id %}">
                             <img src="{{ product.thumb_url }}" class="product-thumbnail" alt="{{ product.name }}">

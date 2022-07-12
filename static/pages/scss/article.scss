@@ -1,0 +1,29 @@
+@import '_variables';
+
+.container {
+  .article {
+    &--title {
+      float: left;
+      font-size: $font-size-big-title;
+      font-weight: $font-weight-title;
+      color: $site-primary-color;
+      width: 100%;
+      margin: auto auto 2.5% auto;
+    }
+
+    &--image {
+      margin: 2.5% auto;
+      text-align: center;
+      display: block;
+    }
+
+    &--description {
+      float: left;
+      width: 100%;
+      margin: 1% auto 5%;
+      font-size: $font-size-mid;
+      font-weight: $font-weight-between;
+      color: #0f0f0f;
+    }
+  }
+}
