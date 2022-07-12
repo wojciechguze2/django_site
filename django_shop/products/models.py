@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 
 from django_shop.settings import DEFAULT_CURRENCY, DEFAULT_LENGTH_UNIT, DEFAULT_WEIGHT_UNIT
@@ -10,7 +12,7 @@ def default_image_urls():
 def default_recommendations():
     return [{
         'product_id': 0,
-        'thumb_urls': ''
+        'thumb_url': ''
     }]
 
 
@@ -58,7 +60,7 @@ class Product(models.Model):
     def price_gross(self):
         return round(float(self.price_net) + float(self.price_net) * (self.vat_percent / 100), 2)
 
-    def to_repr(self):
+    def to_short_repr(self):
         return {
             'id': self.id,
             'name': self.name,
@@ -67,5 +69,28 @@ class Product(models.Model):
             'front_price_gross': self.front_price_gross,
             'currency': self.currency,
             'thumb_url': self.thumb_url
+        }
+
+    def to_repr(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'price_gross': self.price_gross,
+            'front_price_gross': self.front_price_gross,
+            'currency': self.currency,
+            'thumb_url': self.thumb_url,
+            'units': {
+                'length_unit': self.length_unit,
+                'weight_unit': self.weight_unit
+            },
+            'parameters': {
+                'weight': self.weight,
+                'width': self.width,
+                'height': self.height,
+                'length': self.length
+            },
+            'image_urls': json.loads(self.image_urls),
+            'recommendations': json.loads(self.recommendations)
         }
 

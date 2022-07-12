@@ -24,11 +24,11 @@
                         {{ product.short_description }}
                     </div>
                     <div class="product--price">
-                        <span class="price-value {% if product.price_gross > product.front_price_gross %}not-active{% endif %}">
+                        <span class="price-value {% if product.price_gross >= product.front_price_gross %}not-active{% endif %}">
                             {{ product.price_gross }} {{ product.currency|lower }}
                         </span>
                     </div>
-                    {% if product.price_gross > product.front_price_gross %}
+                    {% if product.price_gross >= product.front_price_gross %}
                         <div class="product--price-promoted">
                             <span class="price-promoted-value">
                                 {{ product.front_price_gross }} {{ product.currency|lower }}
