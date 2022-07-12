@@ -1,0 +1,31 @@
+.my-own-carousel-container {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  height: 35vh;
+  display: flex;
+  flex-flow: column wrap;
+  overflow: hidden;
+
+  .carousel-image {
+    float: left;
+    height: 100%;
+    width: 19%;
+    margin: 0 0.5%;
+    overflow: hidden;
+    max-height: 35vh;
+    transition: 1s margin ease-out,
+                1s width ease-in,
+                filter 0.5s ease-out,
+                grayscale 0.5s ease-out,
+                opacity 0.5s ease-out;
+    filter: grayscale(0.75) opacity(0.85);
+    &:hover {
+      filter: grayscale(0) opacity(1);
+      -webkit-box-shadow: 0 2px 14px 7px rgba(53, 26, 127, 0.3);
+      -moz-box-shadow: 0 2px 14px 7px rgba(53, 26, 127, 0.3);
+      box-shadow: 0 2px 14px 7px rgba(53, 26, 127, 0.3);
+    }
+  }
+
+
+}

@@ -132,6 +132,9 @@ class PasswordReminderViewSet(viewsets.ViewSet):
     @staticmethod
     @exceptions_debugger()
     def remind_mail(request: Request):
+        if request.user.is_authenticated:
+            return redirect('front_account')
+
         email = request.POST.get('email')
         form_messages = []
 
@@ -156,7 +159,7 @@ class PasswordReminderViewSet(viewsets.ViewSet):
                 'DJANGO SHOP - Password remind',
                 ('Click on this link to change your password: %s'
                  % reminder_link),
-                'email@example.com',  # change to sender email
+                'djangoshop@interia.com',
                 ['wojciechguze2@gmail.com'],
                 fail_silently=False,
             )
@@ -174,6 +177,9 @@ class PasswordChangeViewSet(viewsets.ViewSet):
     @staticmethod
     @exceptions_debugger()
     def change_password(request: Request):
+        if request.user.is_authenticated:
+            return redirect('front_account')
+
         password_1 = request.POST.get('password1')
         password_2 = request.POST.get('password2')
         request_hash = request.GET.get('hash')

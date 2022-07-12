@@ -11,10 +11,14 @@
             {% for product in products %}
                 <div class="product">
                     <div class="product--thumbnail-container">
-                        <img src="{{ product.thumb_url }}" class="product-thumbnail" alt="{{ product.name }}">
+                        <a href ="{% url 'front_product' product.id %}">
+                            <img src="{{ product.thumb_url }}" class="product-thumbnail" alt="{{ product.name }}">
+                        </a>
                     </div>
                     <div class="product--name">
-                        {{ product.name }}
+                        <a href="{% url 'front_product' product.id %}">
+                            {{ product.name }}
+                        </a>
                     </div>
                     <div class="product--short-description">
                         {{ product.short_description }}
@@ -38,7 +42,7 @@
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </span>
                         </a>
-                        <a class="product-buttons--go-to-product" href="#">
+                        <a class="product-buttons--go-to-product" href="{% url 'front_product' product.id %}">
                             <span class="product-link">
                                 View product
                                 <i class="fas fa-arrow-circle-right"></i>

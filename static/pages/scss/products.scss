@@ -76,6 +76,15 @@
         @media (min-width: $screen-huge-min) {
           font-size: $font-size-title;
         }
+
+        a {
+          text-decoration: none;
+          color: $site-primary-color;
+
+          &:hover {
+            color: $site-primary-color-hover;
+          }
+        }
       }
 
       &--short-description {

@@ -1,0 +1,111 @@
+{% extends 'base_front.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block mycss %}
+    <link href="{% sass_src 'pages/scss/product.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="{% sass_src 'pages/scss/my-own-carousel.scss' %}" rel="stylesheet" type="text/css" />
+{% endblock mycss %}
+
+
+{% block content %}
+<div class="container product-details" id="product-id-{{ product.id }}">
+    <div class="product-top">
+        <div class="left">
+            <div class="product-images-carousel">
+                <div id="productImagesCarousel" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                      {% for image in product.image_urls %}
+                          <button type="button"
+                                  data-bs-target="#productImagesCarousel"
+                                  data-bs-slide-to="{{ forloop.counter0 }}"
+                                  {% if forloop.counter0 == 0 %}class="active"{% endif %}></button>
+                      {% endfor %}
+                  </div>
+                  <div class="carousel-inner">
+                      {% for image in product.image_urls %}
+                        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}">
+                          <img src="{{ image }}"
+                               alt="Product carousel images"
+                               class="d-block w-100">
+                        </div>
+                      {% endfor %}
+                  </div>
+                  <button class="carousel-control-prev"
+                          type="button"
+                          data-bs-target="#productImagesCarousel"
+                          data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </button>
+                  <button class="carousel-control-next"
+                          type="button"
+                          data-bs-target="#productImagesCarousel"
+                          data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </button>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="product--name">
+                ({{ product.name }})
+            </div>
+            <div class="product--parameters">
+                <div>
+                    <b>Parameters</b>
+                </div>
+                <div class="weight w-100 mt-1">
+                    Weight: {{ product.weight }} {{ product.weight_unit }}
+                </div>
+                <div class="width w-100">
+                    Width: {{ product.width }} {{ product.length_unit }}
+                </div>
+                <div class="height w-100">
+                    Height: {{ product.height }} {{ product.length_unit }}
+                </div>
+                <div class="length w-100">
+                    Height: {{ product.length }} {{ product.length_unit }}
+                </div>
+            </div>
+            <div class="product--price {% if product.price_promoted > 0 %}not-active{% endif %}">
+                {{ product.price }} {{ product.currency }}
+            </div>
+            {% if product.price_promoted > 0 %}
+                <div class="product--price-promoted">
+                    {{ product.price_promoted }} {{ product.currency }}
+                </div>
+            {% endif %}
+            <a class="product--add-to-cart" href="#">
+                <span class="add-to-cart-link">
+                    Add to cart
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="product-bottom">
+        <h3 class="product--description-text">
+            Product description
+        </h3>
+        <div class="product--description">
+            {{ product.description }}
+        </div>
+        <h3 class="recommended-products-text">
+            Recommended products
+        </h3>
+        <div class="my-own-carousel-container">
+            {% for product_recommendation in product.recommendations %}
+                <a href="{% url 'front_product' product_recommendation.id %}"
+                   class="carousel-image"
+                   data-position="{{ forloop.counter }}"
+                   style="background-image: url({{ product_recommendation.thumb_url }})">
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/my-own-carousel.js' %}" type="text/javascript"></script>
+{% endblock %}
