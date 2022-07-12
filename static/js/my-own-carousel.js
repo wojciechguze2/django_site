@@ -1,11 +1,11 @@
 let __CAROUSEL_OBJECTS = [],
     __CAROUSEL_OBJECTS_SHIFTED = [],
-    slideTimeout = 2500,
+    slideTimeout = 1000,
     carouselElementsCounter = 5,
     indexLeft = 0,
     indexRight = 0,
-    changeDirectionTimeout = 2500,
-    timesRepeated = 15
+    changeDirectionTimeout = 500,
+    timesRepeated = 30
 
 
 function slideElementRight() {
@@ -15,15 +15,15 @@ function slideElementRight() {
     __CAROUSEL_OBJECTS_SHIFTED.push($element)
 
     $element.css('width', 0)
-    setTimeout(function () {$element.css('margin', '0 1%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 0.75%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 0.5%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 0.25%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 0%')}, slideTimeout / 2)
+    setTimeout(function () {$element.css('margin', '0 0.4%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0.3%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0.2%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0.1%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0')}, slideTimeout / 2)
 
 
     if (__CAROUSEL_OBJECTS.length > carouselElementsCounter) {
-        setTimeout(slideElementRight, slideTimeout * indexRight)
+        setTimeout(slideElementRight, slideTimeout * (indexRight + 1))
     } else if (indexRight < timesRepeated) {
         __CAROUSEL_OBJECTS = __CAROUSEL_OBJECTS_SHIFTED.concat(__CAROUSEL_OBJECTS)
         __CAROUSEL_OBJECTS_SHIFTED = []
@@ -40,11 +40,11 @@ function slideElementLeft() {
     __CAROUSEL_OBJECTS_SHIFTED.push($element)
 
     $element.css('width', '17.5%')
-    setTimeout(function () {$element.css('margin', '0 0.25%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 0.5%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 0.75%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 1%')}, slideTimeout / 5)
-    setTimeout(function () {$element.css('margin', '0 1.25%')}, slideTimeout / 2)
+    setTimeout(function () {$element.css('margin', '0 0.1%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0.2%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0.3%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0.4%')}, slideTimeout / 5)
+    setTimeout(function () {$element.css('margin', '0 0.5%')}, slideTimeout / 2)
 
     if (__CAROUSEL_OBJECTS.length > carouselElementsCounter) {
         setTimeout(slideElementLeft, slideTimeout)

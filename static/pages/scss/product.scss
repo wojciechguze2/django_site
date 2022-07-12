@@ -22,20 +22,35 @@
         font-weight: $font-weight-title;
         letter-spacing: $letter-spacing-title;
         color: $site-primary-color;
+        margin-bottom: 1%;
+      }
+
+      .product--parameters {
+        font-size: $font-size-small-title;
+        font-weight: $font-weight-small-title;
+        letter-spacing: $letter-spacing-between;
+        color: $site-primary-color;
+        margin-bottom: 0.75%;
+        border-radius: $border-radius-2x;
+        padding: 2.5%;
+        transition: all 1s ease-in-out;
+
+        .weight {
+          margin-top: 2.5% !important;
+        }
+
+        &:hover {
+          background-color: $site-primary-color-light;
+        }
+
+         div {
+           margin: 1.5%;
+         }
       }
 
       .product--price {
-        width: 100%;
-        font-size: $font-size-small-title;
         color: $site-primary-color;
         margin: 2.5%;
-      }
-
-      .product--price-save {
-        width: 100%;
-        font-size: $font-size-small-title;
-        color: $text-color-promoted;
-        margin: 1.5%;
       }
 
       .not-active {
@@ -44,11 +59,21 @@
       }
 
       .product--price-promoted {
-        width: 100%;
-        font-size: $font-size-title;
         color: $text-color-promoted;
         font-weight: $font-weight-title;
+      }
+
+      .product--price,
+      .product--price-promoted {
+        font-size: $font-size-big;
         margin: 2.5%;
+        transition: all 1s ease-in-out;
+        width: 100%;
+
+        &:hover {
+          font-size: $font-size-title;
+          font-weight: $font-weight-title;
+        }
       }
 
       .product--add-to-cart {
@@ -91,13 +116,25 @@
     clear: both;
     display: inline-block;
     width: 100%;
-    margin: 4.5% auto;
+
+    .product--description-text,
+    .recommended-products-text {
+      display: block;
+      width: 100%;
+      font-size: $font-size-big;
+      font-weight: $font-weight-title;
+      letter-spacing: $letter-spacing-title;
+      color: $site-primary-color;
+      text-align: center;
+      margin-bottom: 6%;
+      margin-top: 5%;
+    }
 
     .product--description {
       text-align: center;
       margin: auto;
-      font-size: $font-size-description;
-      font-weight: $font-weight-small-title;
+      font-size: $font-size-big-description;
+      font-weight: $font-weight-between;
       letter-spacing: $letter-spacing-description;
     }
   }

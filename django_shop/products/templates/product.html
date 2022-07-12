@@ -48,10 +48,13 @@
         </div>
         <div class="right">
             <div class="product--name">
-                {{ product.name }}
+                ({{ product.name }})
             </div>
             <div class="product--parameters">
-                <div class="weight w-100">
+                <div>
+                    <b>Parameters</b>
+                </div>
+                <div class="weight w-100 mt-1">
                     Weight: {{ product.weight }} {{ product.weight_unit }}
                 </div>
                 <div class="width w-100">
@@ -68,10 +71,6 @@
                 {{ product.price }} {{ product.currency }}
             </div>
             {% if product.price_promoted > 0 %}
-                <div class="product--price-save">
-                    You save: {{ product.price_save }} {{ product.currency }}
-                    <i class="fa fa-exclamation" aria-hidden="true"></i>
-                </div>
                 <div class="product--price-promoted">
                     {{ product.price_promoted }} {{ product.currency }}
                 </div>
@@ -85,17 +84,21 @@
         </div>
     </div>
     <div class="product-bottom">
+        <h3 class="product--description-text">
+            Product description
+        </h3>
         <div class="product--description">
             {{ product.description }}
         </div>
+        <h3 class="recommended-products-text">
+            Recommended products
+        </h3>
         <div class="my-own-carousel-container">
             {% for product_recommendation in product.recommendations %}
                 <a href="{% url 'front_product' product_recommendation.id %}"
                    class="carousel-image"
-                   data-position="{{ forloop.counter }}">
-                    <div class="carousel-image--title">
-
-                    </div>
+                   data-position="{{ forloop.counter }}"
+                   style="background-image: url({{ product_recommendation.thumb_url }})">
                 </a>
             {% endfor %}
         </div>
