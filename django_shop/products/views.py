@@ -7,6 +7,7 @@ from rest_framework.request import Request
 
 from django_shop.globals.decorators import exceptions_debugger
 from django_shop.globals.rules import Pagination
+from django_shop.products.models import Product
 from django_shop.settings import DEFAULT_CURRENCY, DEFAULT_LENGTH_UNIT, DEFAULT_WEIGHT_UNIT
 
 
@@ -15,20 +16,10 @@ class ProductsViewSet(viewsets.ViewSet):
     @staticmethod
     @exceptions_debugger()
     def list(request: Request):
+        products = Product.objects.filter(active=True)
         products = [
-            {
-                'id': _,
-                'name': 'Product name',
-                'short_description': 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem '
-                                     'Ipsum has been the industrys standard dummy text ever since the 1500s. ',
-                'thumb_url': 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid'
-                             '=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80 ',
-                'price': 12.00,
-                'price_promoted': 15.00 if _ % 2 == 0 else 0.00,
-                'currency': DEFAULT_CURRENCY,
-                'brand_id': _
-            }
-            for _ in range(10)
+            product.to_repr()
+            for product in products
         ]
 
         request_page_number = request.GET.get('page')
@@ -89,7 +80,7 @@ class ProductViewSet(viewsets.ViewSet):
                     for _ in range(3)
                 ],
                 'recommendations': [{
-                    'id': i,
+                    'id': i if i != product_id else 1 if 1 != product_id else 2,
                     'thumb_url': 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid'
                     '=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGlnaCUyMHJlc29sdXRpb258ZW58MHx8MHx8&w=1000&q=80 '
                 } for i in range(12)]
