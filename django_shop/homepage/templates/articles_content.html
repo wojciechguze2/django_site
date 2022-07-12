@@ -10,7 +10,11 @@
                         {{ article.title }}
                     </div>
                     <div class="article--description">
-                        {{ article.description }}
+                        {% if article.short_description %}
+                            {{ article.short_description }}
+                        {% else %}
+                            {{ article.description }}
+                        {% endif %}
                     </div>
                     <div class="article--read-more">
                         <a class="read-more-link" href="#{# url 'article' article.id #}">
