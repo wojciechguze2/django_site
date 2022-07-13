@@ -2,3 +2,16 @@
   color: cadetblue !important;
 }
 
+.main {
+  .grid-container {
+    display: inline-grid;
+
+    .dashboard-section {
+      border: 2px inset #0F0838;
+      min-width: 42.5vh;
+      min-height: 40vh;
+      padding: 2.5vh 1.25vh;
+      margin: 2.5vh 1.25vh;
+    }
+  }
+}

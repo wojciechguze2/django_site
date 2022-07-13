@@ -1,4 +1,5 @@
 {% extends 'base_cms.html' %}
+{% load static %}
 {% load sass_tags %}
 
 {% block mycss %}
@@ -6,5 +7,82 @@
 {% endblock mycss %}
 
 {% block content %}
+    <div class="grid-container">
+        <canvas class="orders-chart chart-canvas dashboard-section"></canvas>
+        <canvas class="products-orders-chart chart-canvas dashboard-section"></canvas>
+    </div>
+    <div class="grid-container">
+        <canvas class="accounts-chart chart-canvas dashboard-section"></canvas>
+        <canvas class="test-chart chart-canvas dashboard-section"></canvas>
+    </div>
+{% endblock %}
 
+{% block scripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ordersChartConfig = {
+            type: 'line',
+            data: {
+                labels: {{ orders_month_labels|safe }},
+                datasets: [{
+                    label: 'Orders per month',
+                    backgroundColor: 'rgb(99, 255, 187)',
+                    borderColor: 'rgb(95, 232, 227)',
+                    data: {{ orders_data|safe }}
+                }]
+            },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Orders'
+                        }
+                    }
+                }
+        },
+            productsChartConfig = {
+                type: 'doughnut',
+                data: {
+                    labels: {{ products_labels|safe }},
+                    datasets: [{
+                        label: 'Product orders',
+                        data: {{ products_data|safe }},
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Product orders'
+                        }
+                    }
+                }
+        }
+
+  const ordersChart = new Chart(
+          $('.orders-chart'),
+          ordersChartConfig
+      ),
+      productsOrdersChart = new Chart(
+          $('.products-orders-chart'),
+          productsChartConfig
+      )
+
+    const testChart = new Chart(
+        $('.test-chart'),
+        ordersChartConfig
+  )
+
+    const accountsChart = new Chart(
+        $('.accounts-chart'),
+       ordersChartConfig
+  )
+
+    </script>
 {% endblock %}
