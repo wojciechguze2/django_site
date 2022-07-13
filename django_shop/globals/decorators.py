@@ -51,3 +51,19 @@ def login_required():
         return inner
 
     return decorator
+
+
+def cms_auth_required():
+    """
+    redirect to homepage if not staff user
+    """
+    def decorator(func):
+        def inner(request, *args, **kwargs):
+            if request.user.is_authenticated and request.user.is_staff:
+                return func(request, *args, **kwargs)
+
+            return redirect('front_homepage')
+
+        return inner
+
+    return decorator

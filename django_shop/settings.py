@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'django_shop.globals',
     'django_shop.account',
     'django_shop.orders',
-    'django_shop.payments'
+    'django_shop.payments',
+    # cms
+    'cms.dashboard'
 ]
 
 PASSWORD_HASHERS = [
@@ -70,6 +72,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'django_shop/templates'),
+            os.path.join(BASE_DIR, 'cms/templates'),
             os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
